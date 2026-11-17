@@ -9,11 +9,18 @@ UPDATED = {"fr": "17 novembre 2026", "en": "November 17, 2026"}
 
 # chemin de chaque page, par langue
 PATHS = {
-    "home":    {"en": "atelier-web/en/",          "fr": "atelier-web/"},
-    "support": {"en": "atelier-web/en/support/",  "fr": "atelier-web/assistance/"},
-    "privacy": {"en": "atelier-web/en/privacy/",  "fr": "atelier-web/confidentialite/"},
-    "legal":   {"en": "atelier-web/en/legal/",    "fr": "atelier-web/mentions-legales/"},
+    "home":    {"en": "en/",          "fr": "fr/"},
+    "support": {"en": "en/support/",  "fr": "fr/assistance/"},
+    "privacy": {"en": "en/privacy/",  "fr": "fr/confidentialite/"},
+    "legal":   {"en": "en/legal/",    "fr": "fr/mentions-legales/"},
 }
+SITE = "https://atelier-web.danielstreng.fr/"
+# Anciennes adresses (djms66.github.io/atelier-web/…) : redirigées vers les nouvelles.
+OLD = {"atelier-web/": "fr/", "atelier-web/en/": "en/",
+       "atelier-web/assistance/": "fr/assistance/", "atelier-web/en/support/": "en/support/",
+       "atelier-web/confidentialite/": "fr/confidentialite/", "atelier-web/en/privacy/": "en/privacy/",
+       "atelier-web/mentions-legales/": "fr/mentions-legales/", "atelier-web/en/legal/": "en/legal/"}
+
 NAV = {
     "en": [("home", "Atelier Web"), ("support", "Support"), ("privacy", "Privacy"), ("legal", "Legal notice")],
     "fr": [("home", "Atelier Web"), ("support", "Assistance"), ("privacy", "Confidentialité"), ("legal", "Mentions légales")],
@@ -216,7 +223,7 @@ def page(key, lang):
         nav.append(f'<a{cls} href="{rel(here, PATHS[k][lang])}"{cur}>{label}</a>')
     nav.append(f'<a class="lang" href="{rel(here, PATHS[key][other])}" hreflang="{other}" lang="{other}">'
                f'{"Français" if other == "fr" else "English"}</a>')
-    alt = "".join(f'<link rel="alternate" hreflang="{l}" href="https://djms66.github.io/{PATHS[key][l]}">' for l in ("en", "fr"))
+    alt = "".join(f'<link rel="alternate" hreflang="{l}" href="{SITE}{PATHS[key][l]}">' for l in ("en", "fr"))
     foot = ("© 2026 Daniel Streng · Atelier Web" if lang == "en" else "© 2026 Daniel Streng · Atelier Web")
     return f"""<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8">
@@ -242,8 +249,18 @@ for key in PATHS:
 open(os.path.join(ROOT, "index.html"), "w").write("""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>Atelier Web</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<script>location.replace((navigator.language||'').toLowerCase().startsWith('fr')?'atelier-web/':'atelier-web/en/');</script>
-</head><body><p><a href="atelier-web/en/">Atelier Web (English)</a> · <a href="atelier-web/">Atelier Web (Français)</a></p></body></html>
+<script>location.replace((navigator.language||'').toLowerCase().startsWith('fr')?'fr/':'en/');</script>
+</head><body><p><a href="en/">Atelier Web (English)</a> · <a href="fr/">Atelier Web (Français)</a></p></body></html>
 """)
+for old, new in OLD.items():
+    d = os.path.join(ROOT, old)
+    os.makedirs(d, exist_ok=True)
+    url = SITE + new
+    open(os.path.join(d, "index.html"), "w").write(f"""<!doctype html>
+<html><head><meta charset="utf-8"><title>Atelier Web</title>
+<meta http-equiv="refresh" content="0; url={url}"><link rel="canonical" href="{url}">
+</head><body><p><a href="{url}">{url}</a></p></body></html>
+""")
+open(os.path.join(ROOT, "CNAME"), "w").write("atelier-web.danielstreng.fr\n")
 open(os.path.join(ROOT, ".nojekyll"), "w").write("")
 print("pages écrites")
