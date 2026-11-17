@@ -89,7 +89,7 @@ La mise en ligne est comprise dans l'essai gratuit de 7 jours, puis dans un acha
 <h3>How do I put my site online?</h3>
 <p>Tap “Publish”. The first time, choose where your site lives: Netlify, your web host (FTP), your WordPress site or files to upload yourself. Atelier Web remembers your choice.</p>
 <h3>What is free, and what do I pay for?</h3>
-<p>Creating, editing and previewing are free and unlimited. Publishing requires the one-time purchase “Atelier Web Full”, valid on every device signed in with the same Apple Account, or the 7-day free trial. There is no subscription, and the trial never charges you when it ends.</p>
+<p>Creating, editing and previewing are free and unlimited. Publishing requires the one-time purchase “Atelier Web Full”, valid on every device signed in with the same Apple Account, or the 7-day free trial. There is no subscription, and the trial never charges you when it ends. The price is shown on the App Store and in the app (Options › Atelier Web Full), in your country's currency.</p>
 <h3>I bought it on another device. How do I unlock it here?</h3>
 <p>Open Options › Atelier Web Full and tap “Restore Purchases”, signed in with the same Apple Account.</p>
 <h3>How do I get a refund?</h3>
@@ -111,7 +111,7 @@ La mise en ligne est comprise dans l'essai gratuit de 7 jours, puis dans un acha
 <h3>Comment mettre mon site en ligne ?</h3>
 <p>Touchez « Mettre en ligne ». La première fois, choisissez où votre site doit vivre : Netlify, votre hébergeur (FTP), votre WordPress ou des fichiers à déposer vous-même. Atelier Web retient votre choix.</p>
 <h3>Qu'est-ce qui est gratuit, et qu'est-ce qui est payant ?</h3>
-<p>Créer, modifier et prévisualiser sont gratuits et sans limite. La mise en ligne demande l'achat unique « Atelier Web complet », valable sur tous les appareils liés au même identifiant Apple, ou l'essai gratuit de 7 jours. Aucun abonnement, et l'essai ne déclenche aucun paiement à son terme.</p>
+<p>Créer, modifier et prévisualiser sont gratuits et sans limite. La mise en ligne demande l'achat unique « Atelier Web complet », valable sur tous les appareils liés au même identifiant Apple, ou l'essai gratuit de 7 jours. Aucun abonnement, et l'essai ne déclenche aucun paiement à son terme. Le prix est indiqué sur l'App Store et dans l'appli (Options › Atelier Web complet), dans la monnaie de votre pays.</p>
 <h3>J'ai acheté l'appli sur un autre appareil. Comment la débloquer ici ?</h3>
 <p>Ouvrez Options › Atelier Web complet et touchez « Restaurer les achats », avec le même identifiant Apple.</p>
 <h3>Comment obtenir un remboursement ?</h3>
