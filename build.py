@@ -5,7 +5,7 @@ import os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 MAIL = "contact@danielstreng.fr"
-UPDATED = {"fr": "17 novembre 2026", "en": "November 17, 2026"}
+UPDATED = {"fr": "18 novembre 2026", "en": "November 18, 2026"}
 
 # chemin de chaque page, par langue
 PATHS = {
@@ -66,8 +66,8 @@ BODY = {
 <p class="lead">Lay out your website like a poster, on Mac, iPad and iPhone.</p>
 <p>Text, images, shapes, galleries and sheet music go exactly where you want them: no blocks, no code.
 Every page adapts to desktop, tablet and mobile, then goes online in one step: Netlify, your web host or your WordPress site.</p>
-<div class="card"><strong>Try it, then buy once.</strong> Creating, editing and previewing are free and unlimited.
-Publishing is included in the 7-day free trial, then in a one-time purchase for all your devices. No subscription.</div>
+<div class="card"><strong>Try it, then buy once.</strong> Start a free 7-day trial to create and edit; publishing stays locked.
+When it ends, your existing sites remain available in preview. One purchase unlocks creating, editing and publishing on all your devices. No subscription.</div>
 <p>Questions? See the <a href="support/">support page</a> or write to {M}.</p>
 """),
 "fr": ("Atelier Web — création de sites pour Mac, iPad et iPhone", f"""
@@ -75,8 +75,8 @@ Publishing is included in the 7-day free trial, then in a one-time purchase for 
 <p class="lead">Composez votre site comme une affiche, sur Mac, iPad et iPhone.</p>
 <p>Textes, images, formes, galeries et partitions se placent exactement où vous voulez : sans blocs, sans code.
 Chaque page s'adapte à l'ordinateur, la tablette et le mobile, puis se met en ligne en un geste : Netlify, votre hébergeur ou votre WordPress.</p>
-<div class="card"><strong>Essayez, puis achetez une fois.</strong> Créer, modifier et prévisualiser sont gratuits et sans limite.
-La mise en ligne est comprise dans l'essai gratuit de 7 jours, puis dans un achat unique valable sur tous vos appareils. Aucun abonnement.</div>
+<div class="card"><strong>Essayez, puis achetez une fois.</strong> Commencez l'essai gratuit de 7 jours pour créer et modifier ; la mise en ligne reste bloquée.
+À la fin, vos sites restent consultables en aperçu. Un achat unique débloque la création, la modification et la mise en ligne sur tous vos appareils. Aucun abonnement.</div>
 <p>Une question ? Consultez la page <a href="assistance/">Assistance</a> ou écrivez à {M}.</p>
 """),
 },
@@ -95,7 +95,7 @@ La mise en ligne est comprise dans l'essai gratuit de 7 jours, puis dans un acha
 <h3>How do I put my site online?</h3>
 <p>Tap “Publish”. The first time, choose where your site lives: Netlify, your web host (FTP), your WordPress site or files to upload yourself. Atelier Web remembers your choice.</p>
 <h3>What is free, and what do I pay for?</h3>
-<p>Creating, editing and previewing are free and unlimited. Publishing requires the one-time purchase “Atelier Web Full”, valid on every device signed in with the same Apple Account, or the 7-day free trial. There is no subscription, and the trial never charges you when it ends. The price is shown on the App Store and in the app (Options › Atelier Web Full), in your country's currency.</p>
+<p>Start the 7-day free trial to create and edit; publishing stays locked. After the trial, your existing sites remain available in preview, while creating, editing and publishing require the one-time purchase “Atelier Web Full”, valid on every device signed in with the same Apple Account. There is no subscription, and the trial ends without a charge. The price is shown on the App Store and in the app (Options › Atelier Web Full), in your country's currency.</p>
 <h3>I bought it on another device. How do I unlock it here?</h3>
 <p>Open Options › Atelier Web Full and tap “Restore Purchases”, signed in with the same Apple Account.</p>
 <h3>How do I get a refund?</h3>
@@ -117,7 +117,7 @@ La mise en ligne est comprise dans l'essai gratuit de 7 jours, puis dans un acha
 <h3>Comment mettre mon site en ligne ?</h3>
 <p>Touchez « Mettre en ligne ». La première fois, choisissez où votre site doit vivre : Netlify, votre hébergeur (FTP), votre WordPress ou des fichiers à déposer vous-même. Atelier Web retient votre choix.</p>
 <h3>Qu'est-ce qui est gratuit, et qu'est-ce qui est payant ?</h3>
-<p>Créer, modifier et prévisualiser sont gratuits et sans limite. La mise en ligne demande l'achat unique « Atelier Web complet », valable sur tous les appareils liés au même identifiant Apple, ou l'essai gratuit de 7 jours. Aucun abonnement, et l'essai ne déclenche aucun paiement à son terme. Le prix est indiqué sur l'App Store et dans l'appli (Options › Atelier Web complet), dans la monnaie de votre pays.</p>
+<p>Commencez l'essai gratuit de 7 jours pour créer et modifier ; la mise en ligne reste bloquée. À la fin de l'essai, vos sites existants restent consultables en aperçu ; créer, modifier et mettre en ligne demandent l'achat unique « Atelier Web complet », valable sur tous les appareils liés au même identifiant Apple. Aucun abonnement, et l'essai se termine sans paiement. Le prix est indiqué sur l'App Store et dans l'appli (Options › Atelier Web complet), dans la monnaie de votre pays.</p>
 <h3>J'ai acheté l'appli sur un autre appareil. Comment la débloquer ici ?</h3>
 <p>Ouvrez Options › Atelier Web complet et touchez « Restaurer les achats », avec le même identifiant Apple.</p>
 <h3>Comment obtenir un remboursement ?</h3>
@@ -139,6 +139,7 @@ BODY["privacy"] = {
 <li>Your pages, images, fonts and imported pieces (MIDI, MusicXML, ABC) are stored in the app's Documents folder, on your device.</li>
 <li>Only the photos and files you choose yourself are read.</li>
 <li>Your WordPress password and your Netlify or FTP credentials are kept encrypted in Apple's keychain and are only used to connect to those services.</li>
+<li>A local timestamp helps calculate the 7-day trial and prevents changing the device clock from extending it. It stays on your device and is not sent to the publisher.</li>
 </ul>
 <h2>Connections made by the app</h2>
 <ul>
@@ -165,6 +166,7 @@ BODY["privacy"] = {
 <li>Vos pages, images, polices et morceaux importés (MIDI, MusicXML, ABC) sont rangés dans le dossier Documents de l'application, sur votre appareil.</li>
 <li>Seules les photos et les fichiers que vous choisissez vous-même sont lus.</li>
 <li>Le mot de passe de votre site WordPress, et vos accès Netlify ou FTP, sont gardés chiffrés dans le trousseau d'Apple et ne servent qu'à vous connecter à ces services.</li>
+<li>Un horodatage local sert à calculer les 7 jours d'essai et empêche qu'un changement d'horloge prolonge l'essai. Il reste sur votre appareil et n'est pas envoyé à l'éditeur.</li>
 </ul>
 <h2>Les connexions que fait l'application</h2>
 <ul>
