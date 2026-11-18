@@ -15,6 +15,8 @@ PATHS = {
     "legal":   {"en": "en/legal/",    "fr": "fr/mentions-legales/"},
 }
 SITE = "https://atelier-web.danielstreng.fr/"
+# Logo Atelier Web (logo_atelier_web.svg) : en tête de page, il tourne lentement autour de son centre de symétrie.
+LOGO_PATH = "M1000.44,992.099l-288.739,-981.713l236.22,-0l236.22,708.661l236.22,-561.024l236.052,0l236.22,561.024l236.22,-708.661l236.22,0l-288.479,981.713l994.256,240.728l-118.11,204.573l-731.829,-149.758l367.75,485.085l-118.026,204.427l-603.971,-75.939l495.609,558.904l-118.11,204.573l-705.652,-740.868l-705.944,740.941l-118.11,-204.573l495.609,-558.904l-603.971,75.939l-118.026,-204.427l367.75,-485.085l-731.829,149.758l-118.11,-204.573l994.558,-240.801Zm537.948,576.132l-0,-0.031l0.062,0.016l0.062,-0.016l0,0.031l275.961,69.053l151.772,-262.876l-197.899,-204.54l-78.187,-273.655l-303.543,0l-78.199,273.697l-197.929,204.571l151.772,262.876l276.128,-69.126Zm-812.102,203.32l340.1,-60.072l-118.026,-204.427l-222.074,264.499Zm812.102,-1406.602l-118.026,324.571l236.052,-0l-118.026,-324.571Zm812.06,1406.529l-222.074,-264.499l-118.026,204.427l340.1,60.072Z"
 # Anciennes adresses (djms66.github.io/atelier-web/…) : redirigées vers les nouvelles.
 OLD = {"atelier-web/": "fr/", "atelier-web/en/": "en/",
        "atelier-web/assistance/": "fr/assistance/", "atelier-web/en/support/": "en/support/",
@@ -27,6 +29,10 @@ NAV = {
 }
 
 CSS = """
+.brand .logo{width:1.35em;height:1.2em;vertical-align:-0.22em;margin-right:.45em;fill:currentColor;
+  transform-origin:50.11% 48.88%;animation:tourne 26s linear infinite}
+@keyframes tourne{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.brand .logo{animation:none}}
 :root{--ink:#16151c;--soft:#5b5866;--line:#e6e1d8;--bg:#faf7f2;--accent:#5538ff}
 @media (prefers-color-scheme:dark){:root{--ink:#f2efe8;--soft:#aaa6b4;--line:#2e2c36;--bg:#14131a;--accent:#8f7dff}}
 *{box-sizing:border-box}
@@ -220,7 +226,9 @@ def page(key, lang):
     for k, label in NAV[lang]:
         cur = ' aria-current="page"' if k == key else ""
         cls = ' class="brand"' if k == "home" else ""
-        nav.append(f'<a{cls} href="{rel(here, PATHS[k][lang])}"{cur}>{label}</a>')
+        mark = (f'<svg class="logo" viewBox="0 0 3070 2665" aria-hidden="true"><path fill-rule="evenodd" d="{LOGO_PATH}"/></svg>'
+                if k == "home" else "")
+        nav.append(f'<a{cls} href="{rel(here, PATHS[k][lang])}"{cur}>{mark}{label}</a>')
     nav.append(f'<a class="lang" href="{rel(here, PATHS[key][other])}" hreflang="{other}" lang="{other}">'
                f'{"Français" if other == "fr" else "English"}</a>')
     alt = "".join(f'<link rel="alternate" hreflang="{l}" href="{SITE}{PATHS[key][l]}">' for l in ("en", "fr"))
@@ -231,6 +239,7 @@ def page(key, lang):
 <title>{title}</title>
 <meta name="description" content="{title}">
 {alt}
+<link rel="icon" href="/logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>{CSS}</style></head>
 <body><header>{''.join(nav)}</header>
 <main>{body}</main>
@@ -249,6 +258,7 @@ for key in PATHS:
 open(os.path.join(ROOT, "index.html"), "w").write("""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>Atelier Web</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="/logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script>location.replace((navigator.language||'').toLowerCase().startsWith('fr')?'fr/':'en/');</script>
 </head><body><p><a href="en/">Atelier Web (English)</a> · <a href="fr/">Atelier Web (Français)</a></p></body></html>
 """)
