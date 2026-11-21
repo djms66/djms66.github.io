@@ -252,7 +252,7 @@ def page(key, lang):
     home_label = "Atelier Web"
     home_cur = ' aria-current="page"' if key == "home" else ""
     brand = (f'<a class="brand" href="{rel(here, PATHS["home"][lang])}"{home_cur}>'
-             f'<svg class="logo" viewBox="0 0 3070 2665" aria-hidden="true"><path fill-rule="evenodd" d="{LOGO_PATH}"/></svg>{home_label}</a>')
+             f'<img class="logo" src="/logo.svg" alt="" width="28" height="28">{home_label}</a>')
     nav = []
     for k, label in NAV[lang][1:]:
         cur = ' aria-current="page"' if k == key else ""
