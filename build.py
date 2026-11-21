@@ -29,32 +29,55 @@ NAV = {
 }
 
 CSS = """
-.brand .logo{width:1.35em;height:1.2em;vertical-align:-0.22em;margin-right:.45em;fill:currentColor;
+:root{color-scheme:dark;--bg:#10141b;--panel:#1a2029;--ink:#f6f5f1;--muted:#bac1cb;--accent:#ad9bff;--hair:#333c48}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.brand .logo{width:1.2em;height:1.15em;vertical-align:-.2em;margin-right:.35em;fill:currentColor;
   transform-origin:50.11% 48.88%;animation:tourne 26s linear infinite}
 @keyframes tourne{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.brand .logo{animation:none}}
-:root{--ink:#16151c;--soft:#5b5866;--line:#e6e1d8;--bg:#faf7f2;--accent:#5538ff}
-@media (prefers-color-scheme:dark){:root{--ink:#f2efe8;--soft:#aaa6b4;--line:#2e2c36;--bg:#14131a;--accent:#8f7dff}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-text-size-adjust:100%}
-header,main,footer{max-width:760px;margin:0 auto;padding:0 24px}
-header{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;padding-top:28px;padding-bottom:18px;border-bottom:1px solid var(--line)}
-header .brand{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:15px;margin-right:auto;color:var(--ink);text-decoration:none}
-header a{color:var(--soft);text-decoration:none;font-size:15px}
-header a[aria-current]{color:var(--ink);font-weight:600}
-header .lang{margin-left:8px;padding:2px 10px;border:1px solid var(--line);border-radius:999px}
-main{padding-top:36px;padding-bottom:48px}
-h1{font-size:40px;line-height:1.1;letter-spacing:-.02em;margin:0 0 12px}
-h2{font-size:21px;margin:36px 0 8px}
-h3{font-size:17px;margin:22px 0 4px}
+.site-header,.site-main,.site-footer{width:min(100% - 56px,1200px);margin:0 auto}
+.site-header{min-height:78px;display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--hair)}
+.site-header .brand{font-size:22px;font-weight:700;letter-spacing:-.045em;margin-right:auto;text-decoration:none;white-space:nowrap}
+.site-nav{display:flex;align-items:center;gap:clamp(14px,2.2vw,34px)}
+.site-nav a,.site-header .lang{font-size:14px;color:var(--muted);text-decoration:none;white-space:nowrap}
+.site-nav a[aria-current]{color:var(--accent)}
+.site-nav a:hover,.site-header .lang:hover{color:var(--ink)}
+.site-header .lang{padding:5px 10px;border-left:1px solid var(--hair);margin-left:0}
+.site-main{padding-top:50px;padding-bottom:84px;min-height:calc(100vh - 160px)}
+.site-main:not(.home){max-width:900px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500}
+h1{font-size:clamp(42px,6vw,74px);line-height:1.04;letter-spacing:-.045em;margin:0 0 18px}
+h2{font-size:30px;line-height:1.2;margin:54px 0 13px;padding-top:26px;border-top:1px solid var(--hair)}
+h3{font-size:19px;margin:30px 0 5px}
 p,li{color:var(--ink)}
-.lead{font-size:20px;color:var(--soft);margin:0 0 8px}
-.date{color:var(--soft);font-size:14px}
-a{color:var(--accent)}
+.lead{font-size:clamp(19px,2.2vw,25px);line-height:1.45;color:#d7dbe2;margin:0 0 16px}
+.date{color:var(--muted);font-size:14px}
+.site-main a:not(.action){color:#c9bcff;text-underline-offset:3px}
 ul{padding-left:1.2em}
-li{margin:6px 0}
-.card{border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:18px 0}
-footer{padding-top:18px;padding-bottom:40px;border-top:1px solid var(--line);color:var(--soft);font-size:14px}
+li{margin:9px 0}
+.site-footer{padding:22px 0 36px;border-top:1px solid var(--hair);color:#a5adb8;font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.site-footer a{color:var(--muted);text-decoration:none}
+.site-footer a:hover{color:var(--ink)}
+.home-hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:center;gap:clamp(36px,6vw,84px);padding:42px 0 70px}
+.home-copy h1{max-width:700px}
+.home-copy .lead{max-width:610px}
+.home-copy p:not(.lead){max-width:590px;color:var(--muted)}
+.home-image{margin:0;min-width:0}
+.home-image img{display:block;width:100%;aspect-ratio:1.42;object-fit:cover;object-position:center;border:1px solid var(--hair);border-radius:14px}
+.home-image figcaption{color:var(--muted);font-size:12px;margin-top:9px}
+.actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:28px}
+.action{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;background:var(--accent);color:#10141b;text-decoration:none;font-weight:650}
+.action-secondary{color:var(--ink);text-decoration:underline;text-underline-offset:5px}
+.offer{display:grid;grid-template-columns:minmax(230px,.7fr) 1.3fr;gap:42px;padding:34px 0;border-top:1px solid var(--hair)}
+.offer h2{border:0;padding:0;margin:0;font-size:clamp(28px,3.3vw,40px)}
+.offer p{margin:0;color:var(--muted);max-width:700px}
+@media(max-width:760px){.site-header,.site-main,.site-footer{width:min(100% - 36px,1200px)}.site-header{min-height:0;padding:16px 0 13px;display:grid;grid-template-columns:1fr auto;gap:14px}.site-header .brand{font-size:20px}.site-nav{grid-column:1/-1;grid-row:2;gap:0;justify-content:space-between;overflow-x:auto;padding-bottom:2px}.site-nav a{font-size:12px}.site-header .lang{grid-column:2;grid-row:1;border-left:1px solid var(--hair)}.site-main{padding-top:27px;padding-bottom:58px}.home-hero{grid-template-columns:1fr;gap:28px;padding:15px 0 46px}.home-copy h1{font-size:clamp(44px,12vw,66px)}.home-image{order:-1}.home-image img{aspect-ratio:1.55}.offer{grid-template-columns:1fr;gap:12px;padding:26px 0}.site-footer{padding-top:18px}.footer-links{gap:12px 18px}}
+@media(max-width:390px){.site-header,.site-main,.site-footer{width:min(100% - 28px,1200px)}.site-nav{gap:12px;justify-content:flex-start}.site-nav a{font-size:11px}.home-copy h1{font-size:43px}.actions{gap:16px}}
 """
 
 M = f'<a href="mailto:{MAIL}">{MAIL}</a>'
@@ -62,22 +85,24 @@ M = f'<a href="mailto:{MAIL}">{MAIL}</a>'
 BODY = {
 "home": {
 "en": ("Atelier Web — website builder for Mac, iPad and iPhone", f"""
-<h1>Atelier Web</h1>
-<p class="lead">Lay out your website like a poster, on Mac, iPad and iPhone.</p>
-<p>Text, images, shapes, galleries and sheet music go exactly where you want them: no blocks, no code.
-Every page adapts to desktop, tablet and mobile, then goes online in one step: Netlify, your web host or your WordPress site.</p>
-<div class="card"><strong>Try it, then buy once.</strong> Start a free 7-day trial to create and edit; publishing stays locked.
-When it ends, your existing sites remain available in preview. One purchase unlocks creating, editing and publishing on all your devices. No subscription.</div>
-<p>Questions? See the <a href="support/">support page</a> or write to {M}.</p>
+<section class="home-hero"><div class="home-copy">
+<h1>Lay out your website like a poster.</h1>
+<p class="lead">On Mac, iPad and iPhone.</p>
+<p>Text, images, shapes, galleries and sheet music go exactly where you want them: no blocks, no code. Every page adapts to desktop, tablet and mobile, then goes online in one step: Netlify, your web host or your WordPress site.</p>
+<div class="actions"><a class="action" href="../press/">Watch the demonstrations</a><a class="action-secondary" href="support/">Get support</a></div>
+</div><figure class="home-image"><img src="../press/assets/preview-en.jpg" alt="Atelier Web editor with a visual page composition and editing tools"><figcaption>Compose freely on Mac, iPad and iPhone.</figcaption></figure></section>
+<section class="offer"><h2>Try it, then buy once.</h2><p>Start a free 7-day trial to create and edit; publishing stays locked. When it ends, your existing sites remain available in preview. One purchase unlocks creating, editing and publishing on all your devices. No subscription.</p></section>
+<p>Questions? Write to {M} or visit our <a href="support/">support page</a>.</p>
 """),
 "fr": ("Atelier Web — création de sites pour Mac, iPad et iPhone", f"""
-<h1>Atelier Web</h1>
-<p class="lead">Composez votre site comme une affiche, sur Mac, iPad et iPhone.</p>
-<p>Textes, images, formes, galeries et partitions se placent exactement où vous voulez : sans blocs, sans code.
-Chaque page s'adapte à l'ordinateur, la tablette et le mobile, puis se met en ligne en un geste : Netlify, votre hébergeur ou votre WordPress.</p>
-<div class="card"><strong>Essayez, puis achetez une fois.</strong> Commencez l'essai gratuit de 7 jours pour créer et modifier ; la mise en ligne reste bloquée.
-À la fin, vos sites restent consultables en aperçu. Un achat unique débloque la création, la modification et la mise en ligne sur tous vos appareils. Aucun abonnement.</div>
-<p>Une question ? Consultez la page <a href="assistance/">Assistance</a> ou écrivez à {M}.</p>
+<section class="home-hero"><div class="home-copy">
+<h1>Composez votre site comme une affiche.</h1>
+<p class="lead">Sur Mac, iPad et iPhone.</p>
+<p>Textes, images, formes, galeries et partitions se placent exactement où vous voulez : sans blocs, sans code. Chaque page s'adapte à l'ordinateur, la tablette et le mobile, puis se met en ligne en un geste : Netlify, votre hébergeur ou votre WordPress.</p>
+<div class="actions"><a class="action" href="../press/">Voir les démonstrations</a><a class="action-secondary" href="assistance/">Besoin d’aide ?</a></div>
+</div><figure class="home-image"><img src="../press/assets/preview-fr.jpg" alt="Éditeur Atelier Web avec une composition visuelle et les outils de mise en page"><figcaption>Composez librement sur Mac, iPad et iPhone.</figcaption></figure></section>
+<section class="offer"><h2>Essayez, puis achetez une fois.</h2><p>Commencez l'essai gratuit de 7 jours pour créer et modifier ; la mise en ligne reste bloquée. À la fin, vos sites restent consultables en aperçu. Un achat unique débloque la création, la modification et la mise en ligne sur tous vos appareils. Aucun abonnement.</p></section>
+<p>Une question ? Écrivez à {M} ou consultez l’<a href="assistance/">assistance</a>.</p>
 """),
 },
 "support": {
@@ -224,28 +249,38 @@ def page(key, lang):
     title, body = BODY[key][lang]
     here = PATHS[key][lang]
     other = "fr" if lang == "en" else "en"
+    home_label = "Atelier Web"
+    home_cur = ' aria-current="page"' if key == "home" else ""
+    brand = (f'<a class="brand" href="{rel(here, PATHS["home"][lang])}"{home_cur}>'
+             f'<svg class="logo" viewBox="0 0 3070 2665" aria-hidden="true"><path fill-rule="evenodd" d="{LOGO_PATH}"/></svg>{home_label}</a>')
     nav = []
-    for k, label in NAV[lang]:
+    for k, label in NAV[lang][1:]:
         cur = ' aria-current="page"' if k == key else ""
-        cls = ' class="brand"' if k == "home" else ""
-        mark = (f'<svg class="logo" viewBox="0 0 3070 2665" aria-hidden="true"><path fill-rule="evenodd" d="{LOGO_PATH}"/></svg>'
-                if k == "home" else "")
-        nav.append(f'<a{cls} href="{rel(here, PATHS[k][lang])}"{cur}>{mark}{label}</a>')
-    nav.append(f'<a class="lang" href="{rel(here, PATHS[key][other])}" hreflang="{other}" lang="{other}">'
-               f'{"Français" if other == "fr" else "English"}</a>')
+        nav.append(f'<a href="{rel(here, PATHS[k][lang])}"{cur}>{label}</a>')
+    press_label = "Press" if lang == "en" else "Presse"
+    nav.append(f'<a href="{rel(here, "press/")}">{press_label}</a>')
+    lang_link = f'<a class="lang" href="{rel(here, PATHS[key][other])}" hreflang="{other}" lang="{other}">{"FR" if other == "fr" else "EN"}</a>'
     alt = "".join(f'<link rel="alternate" hreflang="{l}" href="{SITE}{PATHS[key][l]}">' for l in ("en", "fr"))
-    foot = ("© 2026 Daniel Streng · Atelier Web" if lang == "en" else "© 2026 Daniel Streng · Atelier Web")
+    foot = "© 2026 Daniel Streng · Atelier Web"
+    footer_labels = [
+        ("Support" if lang == "en" else "Assistance", PATHS["support"][lang]),
+        ("Privacy" if lang == "en" else "Confidentialité", PATHS["privacy"][lang]),
+        ("Legal notice" if lang == "en" else "Mentions légales", PATHS["legal"][lang]),
+        ("Press" if lang == "en" else "Presse", "press/"),
+    ]
+    footer_links = "".join(f'<a href="{rel(here, dst)}">{label}</a>' for label, dst in footer_labels)
     return f"""<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10141b">
 <title>{title}</title>
 <meta name="description" content="{title}">
 {alt}
 <link rel="icon" href="/logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>{CSS}</style></head>
-<body><header>{''.join(nav)}</header>
-<main>{body}</main>
-<footer>{foot} · <a href="{rel(here, PATHS['legal'][lang])}">{'Legal notice' if lang == 'en' else 'Mentions légales'}</a></footer>
+<body><header class="site-header">{brand}<nav class="site-nav" aria-label="{'Main navigation' if lang == 'en' else 'Navigation principale'}">{''.join(nav)}</nav>{lang_link}</header>
+<main class="site-main {key}">{body}</main>
+<footer class="site-footer"><span>{foot}</span><nav class="footer-links" aria-label="{'Footer navigation' if lang == 'en' else 'Navigation de pied de page'}">{footer_links}</nav></footer>
 </body></html>
 """
 
