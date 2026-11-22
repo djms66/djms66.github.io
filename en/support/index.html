@@ -13,9 +13,8 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
 a{color:inherit}
 a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
-.brand .logo{width:1.2em;height:1.15em;vertical-align:-.2em;margin-right:.35em;fill:currentColor;
-  transform-origin:50.11% 48.88%;animation:tourne 26s linear infinite}
-@keyframes tourne{to{transform:rotate(360deg)}}
+.brand .logo{display:inline-block;width:1.2em;height:1.15em;vertical-align:-.2em;margin-right:.35em;object-fit:contain;transform-origin:center center;animation:tourne 18s linear infinite;will-change:transform}
+@keyframes tourne{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.brand .logo{animation:none}}
 .site-header,.site-main,.site-footer{width:min(100% - 56px,1200px);margin:0 auto}
 .site-header{min-height:78px;display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--hair)}
