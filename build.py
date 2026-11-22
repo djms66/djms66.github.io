@@ -88,7 +88,7 @@ BODY = {
 <h1>Lay out your website like a poster.</h1>
 <p class="lead">On Mac, iPad and iPhone.</p>
 <p>Text, images, shapes, galleries and sheet music go exactly where you want them: no blocks, no code. Every page adapts to desktop, tablet and mobile, then goes online in one step: Netlify, your web host or your WordPress site.</p>
-<div class="actions"><a class="action" href="../press/">Watch the demonstrations</a><a class="action-secondary" href="support/">Get support</a></div>
+<div class="actions"><a class="action" href="../press/?lang=en">Watch the demonstrations</a><a class="action-secondary" href="support/">Get support</a></div>
 </div><figure class="home-image"><img src="../press/assets/preview-en.jpg" alt="Atelier Web editor with a visual page composition and editing tools"><figcaption>Compose freely on Mac, iPad and iPhone.</figcaption></figure></section>
 <section class="offer"><h2>Try it, then buy once.</h2><p>Start a free 7-day trial to create and edit; publishing stays locked. When it ends, your existing sites remain available in preview. One purchase unlocks creating, editing and publishing on all your devices. No subscription.</p></section>
 <p>Questions? Write to {M} or visit our <a href="support/">support page</a>.</p>
@@ -98,7 +98,7 @@ BODY = {
 <h1>Composez votre site comme une affiche.</h1>
 <p class="lead">Sur Mac, iPad et iPhone.</p>
 <p>Textes, images, formes, galeries et partitions se placent exactement où vous voulez : sans blocs, sans code. Chaque page s'adapte à l'ordinateur, la tablette et le mobile, puis se met en ligne en un geste : Netlify, votre hébergeur ou votre WordPress.</p>
-<div class="actions"><a class="action" href="../press/">Voir les démonstrations</a><a class="action-secondary" href="assistance/">Besoin d’aide ?</a></div>
+<div class="actions"><a class="action" href="../press/?lang=fr">Voir les démonstrations</a><a class="action-secondary" href="assistance/">Besoin d’aide ?</a></div>
 </div><figure class="home-image"><img src="../press/assets/preview-fr.jpg" alt="Éditeur Atelier Web avec une composition visuelle et les outils de mise en page"><figcaption>Composez librement sur Mac, iPad et iPhone.</figcaption></figure></section>
 <section class="offer"><h2>Essayez, puis achetez une fois.</h2><p>Commencez l'essai gratuit de 7 jours pour créer et modifier ; la mise en ligne reste bloquée. À la fin, vos sites restent consultables en aperçu. Un achat unique débloque la création, la modification et la mise en ligne sur tous vos appareils. Aucun abonnement.</p></section>
 <p>Une question ? Écrivez à {M} ou consultez l’<a href="assistance/">assistance</a>.</p>
@@ -257,7 +257,7 @@ def page(key, lang):
         cur = ' aria-current="page"' if k == key else ""
         nav.append(f'<a href="{rel(here, PATHS[k][lang])}"{cur}>{label}</a>')
     press_label = "Press" if lang == "en" else "Presse"
-    nav.append(f'<a href="{rel(here, "press/")}">{press_label}</a>')
+    nav.append(f'<a href="{rel(here, "press/")}?lang={lang}">{press_label}</a>')
     lang_link = f'<a class="lang" href="{rel(here, PATHS[key][other])}" hreflang="{other}" lang="{other}">{"FR" if other == "fr" else "EN"}</a>'
     alt = "".join(f'<link rel="alternate" hreflang="{l}" href="{SITE}{PATHS[key][l]}">' for l in ("en", "fr"))
     foot = "© 2026 Daniel Streng · Atelier Web"
@@ -265,9 +265,12 @@ def page(key, lang):
         ("Support" if lang == "en" else "Assistance", PATHS["support"][lang]),
         ("Privacy" if lang == "en" else "Confidentialité", PATHS["privacy"][lang]),
         ("Legal notice" if lang == "en" else "Mentions légales", PATHS["legal"][lang]),
-        ("Press" if lang == "en" else "Presse", "press/"),
+        ("Press" if lang == "en" else "Presse", f"press/?lang={lang}"),
     ]
-    footer_links = "".join(f'<a href="{rel(here, dst)}">{label}</a>' for label, dst in footer_labels)
+    footer_links = "".join(
+        f'<a href="{rel(here, dst.split("?")[0])}{("?" + dst.split("?", 1)[1]) if "?" in dst else ""}">{label}</a>'
+        for label, dst in footer_labels
+    )
     return f"""<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
