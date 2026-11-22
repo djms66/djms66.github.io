@@ -252,7 +252,7 @@ def page(key, lang):
     home_label = "Atelier Web"
     home_cur = ' aria-current="page"' if key == "home" else ""
     brand = (f'<a class="brand" href="{rel(here, PATHS["home"][lang])}"{home_cur}>'
-             f'<img class="logo" src="/logo.svg" alt="" width="28" height="28">{home_label}</a>')
+             f'<img class="logo" src="/logo.svg?v=3" alt="" width="28" height="28">{home_label}</a>')
     nav = []
     for k, label in NAV[lang][1:]:
         cur = ' aria-current="page"' if k == key else ""
@@ -276,7 +276,7 @@ def page(key, lang):
 <title>{title}</title>
 <meta name="description" content="{title}">
 {alt}
-<link rel="icon" href="/logo.svg?v=2" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=2"><link rel="shortcut icon" href="/favicon.ico?v=2"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+<link rel="icon" href="/logo.svg?v=3" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=3"><link rel="shortcut icon" href="/favicon.ico?v=3"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3">
 <style>{CSS}</style></head>
 <body><header class="site-header">{brand}<nav class="site-nav" aria-label="{'Main navigation' if lang == 'en' else 'Navigation principale'}">{''.join(nav)}</nav>{lang_link}</header>
 <main class="site-main {key}">{body}</main>
@@ -295,7 +295,7 @@ for key in PATHS:
 open(os.path.join(ROOT, "index.html"), "w").write("""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>Atelier Web</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" href="/logo.svg?v=2" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=2"><link rel="shortcut icon" href="/favicon.ico?v=2"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+<link rel="icon" href="/logo.svg?v=3" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=3"><link rel="shortcut icon" href="/favicon.ico?v=3"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3">
 <script>location.replace((navigator.language||'').toLowerCase().startsWith('fr')?'fr/':'en/');</script>
 </head><body><p><a href="en/">Atelier Web (English)</a> · <a href="fr/">Atelier Web (Français)</a></p></body></html>
 """)
